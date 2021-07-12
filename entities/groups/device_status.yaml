@@ -1,0 +1,5 @@
+living-room_mediaplayers:
+  name: Living Room Media Players
+  entities:
+    - media_player.home_mini
+    - media_player.shield

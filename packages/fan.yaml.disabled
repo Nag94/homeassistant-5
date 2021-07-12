@@ -1,0 +1,155 @@
+## NOTE: it seems that in later versions of Tasmota the iFan02 configuration uses a different state topic 
+## than the original as listed below.
+## The new topic for both state_topic and speed_topic is "stat/sonoff_MBR_fan/FANSPEED"
+
+## iFan02 or iFan03 flashed with Tasmota:
+
+fan:
+  - platform: template
+    fans:
+      bedroom_fan:
+        friendly_name: "Bedroom Fan"
+        value_template: "{{ states('input_boolean.bedroom_fan_state') }}"
+        speed_template: "{{ states('input_select.bedroom_fan_speed') }}"
+        turn_on:
+          service: script.bedroom_fan_on
+        turn_off:
+          service: script.bedroom_fan_off
+        set_speed:
+          service: script.bedroom_fan_set_speed
+          data_template:
+            speed: "{{ speed }}"
+        speeds:
+          - off
+          - low
+          - medium
+          - high
+
+input_select:
+  bedroom_fan_speed:
+    name: Bedroom Fan Speeds
+    options:
+      - 'off'
+      - 'low'
+      - 'medium'
+      - 'high'
+
+input_boolean:
+  bedroom_fan_state:
+    name: Bedroom Fan State
+    
+script:
+  bedroom_fan_off:
+    alias: Bedroom Fan Off
+    sequence:
+      - service: switch.turn_on
+        entity_id: switch.bedroom_fan_0
+        # data:
+          # packet: 'JgA0ACsMKw0PKA8pDygPKQ8oKw0PKA8oDykPAAEGKw0qDQ8pDygPKA8pDygrDQ8oDykPKA8ADQUAAAAA'
+      - service: input_boolean.turn_off
+        data:
+          entity_id: input_boolean.bedroom_fan_state
+        
+  bedroom_fan_on:
+    alias: Bedroom Fan On
+    sequence:
+      - service: input_boolean.turn_on
+        data:
+          entity_id: input_boolean.bedroom_fan_state
+      - service: >
+          {% if is_state("input_select.bedroom_fan_speed", "low") %}
+            script.bedroom_fan_low
+          {% elif is_state("input_select.bedroom_fan_speed", "medium") %}
+            script.bedroom_fan_med
+          {% elif is_state("input_select.bedroom_fan_speed", "high") %}
+            script.bedroom_fan_high
+          {% endif %}
+  bedroom_fan_set_speed:
+    alias: Bedroom Fan Set Speed
+    sequence:
+      - service: input_select.select_option
+        data_template:
+          entity_id: input_select.bedroom_fan_speed
+          option: "{{ speed }}"
+      - delay:
+          milliseconds: 500
+      - service: script.turn_on
+        entity_id: script.bedroom_fan_on
+
+  bedroom_fan_low:
+    alias: Bedroom Fan Low
+    sequence:
+      - service: switch.turn_on
+        entity_id:  switch.bedroom_fan_1
+
+  bedroom_fan_med:
+    alias: Bedroom Fan Medium
+    sequence:
+      - service: switch.turn_on
+        entity_id:  switch.bedroom_fan_2
+
+  bedroom_fan_high:
+    alias: Bedroom Fan High
+    sequence:
+      - service: switch.turn_on
+        entity_id:  switch.bedroom_fan_3
+
+switch:
+  - platform: broadlink
+    host: 192.168.1.24
+    mac: '24:DF:A7:D3:2A:7E'
+    #timeout: 15
+    switches:
+      bedroom_light:
+        friendly_name: "Bedroom Fan Light"
+        command_on: 'JgAKAScPKQ4OKg0qDSoNKg0qDikOKQ4pDygO6SgOKA8NKg4pDionECcQJxAoDygPKA8o1yoOKA8NKg0qDikPKA4pDionEA0qDikN6ScQJxANKg0qDSoNKg0qDikoDw0qDioN6CgPKA8NKg4pDioNKg0qDSooDw0qDSoO6CgPKA8NKg4pDygOKQ4pDykoDw0qDSoO6CcQJxANKg0qDSoNKg0qDikoDw0qDioN6CgPKA8NKg4pDioNKg0qDSooDw0qDSoO6CgPKA8NKg0qDSoOKQ4pDionEA0qDSoN6CgPKA8OKQ4qDikNKg0qDikoDw0qDikO9yoOKA8NKg4pDSoNKg4pDikoDw4qDSoNAA0FAAAAAAAAAAAAAAAA'
+        command_off: 'JgA6ASoOJxANKg0qDSoOKQ4pDikOKg0qDSoN6SkOJxANKg0qDSooDygPKBAnDygPKA8o2CkOKA8NKg4pDikOKQ4pDionEA0qDSoN6ScQJxANKg0qDSoNKg0qDikoDw4pDikO6CgPKA8NKg4pDioNKQ4qDSonEA0qDSoN6ScQJxANKg0qDSoNKg0qDikoDw4pDikO6CgPKQ4NKg4pDikOKg0qDSooDw0qDSoN6ScQJxANKg0qDikNKg0qDikoDw4pDioN6CgPKA8NKg4pDioNKg0qDSooDw0qDSoO6CgPKA8NKg0qDSoNKg4pDikoDw4qDSoN6CgPKA8OKQ4pDygOKg0qDSooDw0qDSoN6SgPJxANKg0qDSoNKg0qDikoDw4pDikO8ykOJxANKg0qDSoNKg0qDSooDw0qDygOAA0FAAAAAAAAAAAAAAAA'
+      bedroom_fan_1:
+        friendly_name: "Bedroom Fan Low"
+        command_on: 'JgDCACkNKA8NKg0rDCsMKwwrDSoNKg0qDSsM9CoOKg0MKwwrDCsqDSoNKg0qDSoNKg0q1igPKg0NKg0qDSsqDQwrDCsMKwwrKA8o2CgRJg8NKg0qDSsnDw0rDCsMKwwrKA8o2CgPKA8MKwwrDSooDw0qDSsMKwwrKg0q1ioNKg0MKwwrDCsqDQ0qDSoNKg0rJxAn2SgPJxAMKwwrDCsoDwwrDCsMKw0qKA8o2ScPKA8NKg0qDSsnEAwrDCsMKwwrKA8oAA0FAAAAAA=='
+        command_off: 'JgDyACoNJxANKg4pDikOKQ8oDygPKA8oDykP8icQKA8NKg8oDygoDygQJxAnECcQJxAn2SoOJxANKg4pDikOKQ4pKA8NKg8oDykN8yoOKA8NKg4pDikOKQ4pKA8OKQ4qDikO8ioOJxANKg4pDSoNKg4pKA8NKg8oDioO8ykOJxANKg4pDSoNKg4pKA8OKQ8oDioN8yoOKA8NKg4pDSoOKQ4pKA8OKQ4qDSoN9CkOKA8NKg0qDikOKQ4pKBANKg0qDSoN9CkOKA8NKg4pDikOKQ4qJxANKg0qDSoN9CkOKA8QJxAnDygQKA8oJxAPKA8oECcQAA0FAAAAAA=='  
+
+# automation:
+#   #- id: Turn_Off_SR_Fan_1_Sw
+#   - alias: Toggle Bedroom Fan Low Switch
+#     trigger:
+#       platform: state
+#       entity_id: switch.bedroom_fan_1
+#       to: 'on'
+#       for:
+#         seconds: 1
+#     action:
+#       entity_id: switch.bedroom_fan_1
+
+#   #- id: Turn_Off_SR_Fan_2_Sw
+#   - alias: Toggle Bedroom Fan Medium Switch
+#     trigger:
+#       platform: state
+#       entity_id: switch.bedroom_fan_2
+#       to: 'on'
+#       for:
+#         seconds: 1
+#     action:
+#       entity_id: switch.bedroom_fan_2
+      
+#   #- id: Turn_Off_SR_Fan_3_Sw
+#   - alias: Toggle Bedroom Fan High Switch
+#     trigger:
+#       platform: state
+#       entity_id: switch.bedroom_fan_3
+#       to: 'on'
+#       for:
+#         seconds: 1
+#     action:
+#       entity_id: switch.bedroom_fan_3
+    
+#   #- id: Turn_Off_SR_Fan_0_Sw
+#   - alias: Toggle Bedroom Fan Off Switch
+#     trigger:
+#       platform: state
+#       entity_id: switch.bedroom_fan_0
+#       to: 'on'
+#       for:
+#         seconds: 1
+#     action:
+#       entity_id: switch.bedroom_fan_0  

@@ -1,0 +1,80 @@
+## Created by Eelco Bode
+## More-page add-on: speedtest
+## Version: 0.0.1
+
+- type: vertical-stack
+  cards:
+    - type: 'custom:rpi-monitor-card'
+      entity: sensor.rpi_monitor_homeassistant
+      card_style: full
+      temp_scale: C
+      fs_severity:
+        - color: Green
+          from: 0
+          to: 25
+        - color: Orange
+          from: 26
+          to: 50
+        - color: Red
+          from: 51
+          to: 100
+
+    - type: 'custom:rpi-monitor-card'
+      entity: sensor.rpi_monitor_nginx
+      card_style: full
+      temp_scale: C
+      fs_severity:
+        - color: Green
+          from: 0
+          to: 25
+        - color: Orange
+          from: 26
+          to: 50
+        - color: Red
+          from: 51
+          to: 100
+
+    - type: 'custom:rpi-monitor-card'
+      entity: sensor.rpi_monitor_pihole
+      card_style: full
+      temp_scale: C
+      fs_severity:
+        - color: Green
+          from: 0
+          to: 25
+        - color: Orange
+          from: 26
+          to: 50
+        - color: Red
+          from: 51
+          to: 100
+
+    - type: 'custom:rpi-monitor-card'
+      entity: sensor.rpi_monitor_octopi
+      card_style: full
+      temp_scale: C
+      fs_severity:
+        - color: Green
+          from: 0
+          to: 25
+        - color: Orange
+          from: 26
+          to: 50
+        - color: Red
+          from: 51
+          to: 100
+
+    - type: 'custom:rpi-monitor-card'
+      entity: sensor.rpi_monitor_gardenpi
+      card_style: full
+      temp_scale: C
+      fs_severity:
+        - color: Green
+          from: 0
+          to: 25
+        - color: Orange
+          from: 26
+          to: 50
+        - color: Red
+          from: 51
+          to: 100    

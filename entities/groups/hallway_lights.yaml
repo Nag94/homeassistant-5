@@ -1,0 +1,4 @@
+hallway_lights:
+  name: Hallway Lights
+  entities:
+    - light.hallway_light

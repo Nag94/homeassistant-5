@@ -1,0 +1,12 @@
+ # https://dwainscheeren.github.io/dwains-lovelace-dashboard/configuration/global.html
+ 
+global:
+  weather: weather.buienweather # Configure a weather entity see HA docs for more info.
+  outside_temperature: sensor.buienradar_temperature # Configure a sensor here!
+  outside_humidity: sensor.buienradar_precipitation # Configure a sensor here!
+  # alarm: alarm_control_panel.alarm_system #Alarm panel entity.
+  inside_temperature: xiamo_aqara_livingroom_temperature #Can be 'climate.' or an 'sensor.' entity.
+  favorites_homepage: 'true' #Uncomment this line if you want the house information favorites on your homepage.
+  custom_popups:
+    - domain: light
+      path: 'dwains-dashboard/addons/popups/light.yaml'

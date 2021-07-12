@@ -1,0 +1,21 @@
+{
+    "manufacturer": "Acorn",
+    "supportedModels": [
+      "Unknown"
+    ],
+    "supportedController": "Broadlink",
+    "commandsEncoding": "Base64",
+    "speed": [
+      "low",
+      "medium",
+      "high"
+    ],
+    "commands": {
+      "off": "JgCqACoNJxANKQ8pDicPJxEpDikOKQ4pDSoP8igPKA8OKQ8oDyknECcQJxAnECcQJxAn2SkOKA8PKA8oDykOKQ4pKA8NKg4pDSoP8ikOKA8NKg8oDygPKA8pJxANKg4pDikN9CoNKA8NKg4pDikPKA8oKA8PKA8pDikO8ykOJxAOKQ8oDikOKQ8oKA8NKg8oECgP8SoOJxANKg4pDikOKQ8oKA8OKQ4pDygPAA0F",
+      "default": {
+        "low": "JgAKASkOKA8NKg0qDSoNKg8oDygPKQ4pDikO8isNJxAOKQ4oECgoDygPKA8oDygPKA8o2CgPJxANKg4pDikoDw4pDikOKQ4pKBAn2CoNKA8NKg8oDygoDw8oDykOKQ4pJxAo2CoNKA8OKQ4pDygoDw4pDikOKQ4pKA8o2CgPKA8OKQ4pDygoDw8oDygQKA4pJxAn2SkOJw8PKA8pDiknEA4pDikOKQ4pKA8o2CkOKA8OKQ4pDikoDw0qDikOKQ4pKA8o1ykPKA8OKQ4pDikoDw4pDygPKA0qKBAn2SkNKA8OKQ4pDygoDw4pDykOKQ8oJxAo2CkOJw8PKA8oDyknEA0qDikOKQ4pKA8oAA0F",
+        "medium": "JgDaACoNKg0OKQ4pDSoOKQ0qDSsMKwwrDCsM8isPKA8NKg0qDSsnECcQJxAnECcQJxAn2SgOKA8NKg0rDCsMKwwrDCsNKigPDSoN9CgPJw8OKQ0rDCsMKw4pDikOKCkPDSoN9CgPJw8NKwwrDikMKw4pDikOKSgPDSoN9CgOKA8NKg0rDikMKwwrDCsNKigPDSoO8ycPKA8NKg0qDykMKwwrDCsMKygPDCsO8SwMKA8NKg4pDSsMKwwrDCsOKSoNDCsM9CgPKg0MKw0qDSoNKg0rDikMKygPDCsMAA0F",
+        "high": "JgDiAAcAB9QFAAsHKwsoDxAnECgPKA8oDygPKA8oECcQJxDxKg0oDxAnECgPKCcQJxAnECcQJxAnECfZKwwnEA8oDikPKA8oDygPKBAnECcQKCfZKwsoDxAnECcQKA8oDygPKA8oECcQJyjYKwwoDxAnECcPKBAoDygPKA8oDygPKCjYKwwoDw8oDygOKQ4pECcPKA4pECcQKCfZKwwnEA8nECgPKA8oDygPKBAnECcPKCjYKwwoDw4pECcQJxAnECgPKA8oDygPKCjXLAwoDw8oECcQJxAnECcQJxAoDygPKCcADQU="
+      }
+    }
+  }

@@ -1,0 +1,104 @@
+# dwains_theme
+
+- type: vertical-stack
+  title: Dracaena Draco
+  cards:
+  - type: picture
+    image: local/lovelace-flower-card/data/Images/dracaena draco.jpg
+  - type: horizontal-stack
+    cards:
+      - type: custom:mini-graph-card
+        entities:
+          - sensor.dracaena_moisture
+        name: Moisture
+        line_color: blue
+        line_width: 8
+        font_size: 75
+        color_thresholds:
+        - value: 60
+          color: "#c0392b"
+        - value: 40
+          color: "#2bc235"
+        - value: 15
+          color: "#2b6ac2" 
+      - type: custom:mini-graph-card
+        entities:
+          - sensor.dracaena_brightness
+        name: Light
+        line_color: '#e74c3c'
+        line_width: 8
+        font_size: 75
+        color_thresholds:
+        - value: 50000
+          color: "#c0392b"
+        - value: 5000
+          color: "#2bc235"
+        - value: 2000
+          color: "#2b6ac2" 
+      - type: custom:mini-graph-card
+        entities:
+          - sensor.dracaena_temperature
+        name: Temp
+        #line_color: var(--accent-color)
+        line_width: 8
+        font_size: 75   
+        color_thresholds:
+        - value: 35.5
+          color: "#c0392b"
+        - value: 22.75
+          color: "#2bc235"
+        - value: 10
+          color: "#2b6ac2" 
+      - type: custom:battery-entity
+        entity: sensor.dracaena_battery
+        name: Dracaena Draco battery
+
+- type: vertical-stack
+  title: Viooltje
+  cards:
+  - type: picture
+    image: local/img/viooltje.jpg
+  - type: horizontal-stack
+    cards:
+      - type: custom:mini-graph-card
+        entities:
+          - sensor.flower_2_moisture
+        name: Moisture
+        line_color: blue
+        line_width: 8
+        font_size: 75
+        color_thresholds:
+        - value: 60
+          color: "#c0392b"
+        - value: 40
+          color: "#2bc235"
+        - value: 15
+          color: "#2b6ac2" 
+      - type: custom:mini-graph-card
+        entities:
+          - sensor.flower_2_light_intensity
+        name: Light
+        line_color: '#e74c3c'
+        line_width: 8
+        font_size: 75
+        color_thresholds:
+        - value: 50000
+          color: "#c0392b"
+        - value: 5000
+          color: "#2bc235"
+        - value: 2000
+          color: "#2b6ac2" 
+      - type: custom:mini-graph-card
+        entities:
+          - sensor.flower_2_temperature
+        name: Temp
+        #line_color: var(--accent-color)
+        line_width: 8
+        font_size: 75   
+        color_thresholds:
+        - value: 35.5
+          color: "#c0392b"
+        - value: 22.75
+          color: "#2bc235"
+        - value: 10
+          color: "#2b6ac2" 

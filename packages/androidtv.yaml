@@ -1,0 +1,12 @@
+---
+  # https://www.home-assistant.io/components/androidtv/
+  media_player:
+    # Use an ADB server to setup an Android TV device, provide
+    # an app name, and override the default turn on/off commands
+  
+    - platform: androidtv
+      name: Shield Living Room
+      host: !secret shield_host
+      get_sources: true
+      # adb_server_ip: 127.0.0.1
+      # adb_server_port: 5037

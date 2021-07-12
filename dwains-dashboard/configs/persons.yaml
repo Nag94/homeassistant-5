@@ -1,0 +1,13 @@
+# https://dwainscheeren.github.io/dwains-lovelace-dashboard/configuration/persons.html
+
+persons: 
+  - name: 'Daniël'
+    track: person.bedar
+    picture_path: 'images/persons/bedar.png'
+    show_map: false
+    page_entities:
+      columns: 2 #optional
+      entities:
+        - entity: sensor.oneplus_7t_pro_steps_sensor
+        - entity: sensor.hd1913_battery_level
+        - entity: device_tracker.hd1913

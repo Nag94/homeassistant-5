@@ -1,0 +1,6 @@
+kitchen_lights:
+  name: Kitchen Lights 
+  entities:
+    - light.kitchen_light_3_bulb_1
+    - light.kitchen_light_3_bulb_2
+    - light.kitchen_light_3_bulb_3

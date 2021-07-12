@@ -1,0 +1,329 @@
+# dwains_theme
+
+###### Canabis Indica ######
+
+# - type: vertical-stack
+#   title: Canabis Indica
+#   cards:
+#     - type: horizontal-stack
+#       cards:
+#         - type: custom:flower-card
+#           entity: plant.cannabis
+#           species: "cannabis indica"
+#     - type: horizontal-stack
+#       cards:
+#         - type: custom:mini-graph-card
+#           entities: 
+#             - sensor.cannabis_temperature
+#           icon: mdi:thermometer
+#           align_header: right
+#           font_size: 70
+#           line_color: 'var(--dwains-theme-accent)'
+#           hours_to_show: 24
+#           hour24: true
+#           points_per_hour: 1
+#           smoothing: true
+#           show:
+#             name: false
+#             points: hover
+#             graph: line
+#             extrema: false
+
+#         - type: custom:mini-graph-card
+#           entities:
+#             - sensor.cannabis_brightness
+#           icon: mdi:white-balance-sunny
+#           align_header: right
+#           font_size: 70
+#           line_color: 'var(--dwains-theme-accent)'
+#           hours_to_show: 24
+#           hour24: true
+#           points_per_hour: 1
+#           smoothing: true
+#           show:
+#             name: false
+#             points: hover
+#             graph: line
+#             extrema: false
+
+#     - type: horizontal-stack
+#       cards:
+#         - type: custom:mini-graph-card
+#           entities:
+#             - sensor.cannabis_moisture
+#           icon: mdi:water-percent
+#           align_header: right
+#           font_size: 70
+#           line_color: 'var(--dwains-theme-accent)'
+#           hours_to_show: 24
+#           hour24: true
+#           points_per_hour: 1
+#           smoothing: true
+#           show:
+#             name: false
+#             points: hover
+#             graph: line
+#             extrema: false
+
+#         - type: custom:mini-graph-card
+#           entities:
+#             - sensor.cannabis_conductivity
+#           icon: mdi:leaf
+#           align_header: right
+#           font_size: 70
+#           line_color: 'var(--dwains-theme-accent)'
+#           hours_to_show: 24
+#           hour24: true
+#           points_per_hour: 1
+#           smoothing: true
+#           show:
+#             name: false
+#             points: hover
+#             graph: line
+#             extrema: false
+
+###### Calathea Roseopicta ######
+
+- type: vertical-stack
+  title: Calathea Roseopicta
+  cards:
+    - type: horizontal-stack
+      cards:
+        - type: custom:flower-card
+          entity: plant.calathea
+          species: "calathea roseopicta"
+    - type: horizontal-stack
+      cards:
+        - type: custom:mini-graph-card
+          entities: 
+            - sensor.calathea_temperature
+          icon: mdi:thermometer
+          align_header: right
+          font_size: 70
+          line_color: 'var(--dwains-theme-accent)'
+          hours_to_show: 24
+          hour24: true
+          points_per_hour: 1
+          smoothing: true
+          show:
+            name: false
+            points: hover
+            graph: line
+            extrema: false
+
+        - type: custom:mini-graph-card
+          entities:
+            - sensor.calathea_brightness
+          icon: mdi:white-balance-sunny
+          align_header: right
+          font_size: 70
+          line_color: 'var(--dwains-theme-accent)'
+          hours_to_show: 24
+          hour24: true
+          points_per_hour: 1
+          smoothing: true
+          show:
+            name: false
+            points: hover
+            graph: line
+            extrema: false
+
+    - type: horizontal-stack
+      cards:
+        - type: custom:mini-graph-card
+          entities:
+            - sensor.calathea_moisture
+          icon: mdi:water-percent
+          align_header: right
+          font_size: 70
+          line_color: 'var(--dwains-theme-accent)'
+          hours_to_show: 24
+          hour24: true
+          points_per_hour: 1
+          smoothing: true
+          show:
+            name: false
+            points: hover
+            graph: line
+            extrema: false
+
+        - type: custom:mini-graph-card
+          entities:
+            - sensor.calathea_conductivity
+          icon: mdi:leaf
+          align_header: right
+          font_size: 70
+          line_color: 'var(--dwains-theme-accent)'
+          hours_to_show: 24
+          hour24: true
+          points_per_hour: 1
+          smoothing: true
+          show:
+            name: false
+            points: hover
+            graph: line
+            extrema: false
+
+###### Spathiphyllum 'Bingo Cupido' ######
+
+- type: vertical-stack
+  title: Spathiphyllum 'Bingo Cupido'
+  cards:
+    - type: horizontal-stack
+      cards:
+        - type: custom:flower-card
+          entity: plant.spathiphyllum
+          species: "spathiphyllum 'bingo cupido'"
+    - type: horizontal-stack
+      cards:
+        - type: custom:mini-graph-card
+          entities: 
+            - sensor.spathiphyllum_temperature
+          icon: mdi:thermometer
+          align_header: right
+          font_size: 70
+          line_color: 'var(--dwains-theme-accent)'
+          hours_to_show: 24
+          hour24: true
+          points_per_hour: 1
+          smoothing: true
+          show:
+            name: false
+            points: hover
+            graph: line
+            extrema: false
+
+        - type: custom:mini-graph-card
+          entities:
+            - sensor.spathiphyllum_brightness
+          icon: mdi:white-balance-sunny
+          align_header: right
+          font_size: 70
+          line_color: 'var(--dwains-theme-accent)'
+          hours_to_show: 24
+          hour24: true
+          points_per_hour: 1
+          smoothing: true
+          show:
+            name: false
+            points: hover
+            graph: line
+            extrema: false
+
+    - type: horizontal-stack
+      cards:
+        - type: custom:mini-graph-card
+          entities:
+            - sensor.spathiphyllum_moisture
+          icon: mdi:water-percent
+          align_header: right
+          font_size: 70
+          line_color: 'var(--dwains-theme-accent)'
+          hours_to_show: 24
+          hour24: true
+          points_per_hour: 1
+          smoothing: true
+          show:
+            name: false
+            points: hover
+            graph: line
+            extrema: false
+
+        - type: custom:mini-graph-card
+          entities:
+            - sensor.spathiphyllum_conductivity
+          icon: mdi:leaf
+          align_header: right
+          font_size: 70
+          line_color: 'var(--dwains-theme-accent)'
+          hours_to_show: 24
+          hour24: true
+          points_per_hour: 1
+          smoothing: true
+          show:
+            name: false
+            points: hover
+            graph: line
+            extrema: false
+
+###### Dracaena Draco ######
+
+- type: vertical-stack
+  title: Dracaena Draco
+  cards:
+    - type: horizontal-stack
+      cards:
+        - type: custom:flower-card
+          entity: plant.dracaena
+          species: "dracaena draco"
+    - type: horizontal-stack
+      cards:
+        - type: custom:mini-graph-card
+          entities: 
+            - sensor.dracaena_temperature
+          icon: mdi:thermometer
+          align_header: right
+          font_size: 70
+          line_color: 'var(--dwains-theme-accent)'
+          hours_to_show: 24
+          hour24: true
+          points_per_hour: 1
+          smoothing: true
+          show:
+            name: false
+            points: hover
+            graph: line
+            extrema: false
+
+        - type: custom:mini-graph-card
+          entities:
+            - sensor.dracaena_brightness
+          icon: mdi:white-balance-sunny
+          align_header: right
+          font_size: 70
+          line_color: 'var(--dwains-theme-accent)'
+          hours_to_show: 24
+          hour24: true
+          points_per_hour: 1
+          smoothing: true
+          show:
+            name: false
+            points: hover
+            graph: line
+            extrema: false
+
+    - type: horizontal-stack
+      cards:
+        - type: custom:mini-graph-card
+          entities:
+            - sensor.dracaena_moisture
+          icon: mdi:water-percent
+          align_header: right
+          font_size: 70
+          line_color: 'var(--dwains-theme-accent)'
+          hours_to_show: 24
+          hour24: true
+          points_per_hour: 1
+          smoothing: true
+          show:
+            name: false
+            points: hover
+            graph: line
+            extrema: false
+
+        - type: custom:mini-graph-card
+          entities:
+            - sensor.dracaena_conductivity
+          icon: mdi:leaf
+          align_header: right
+          font_size: 70
+          line_color: 'var(--dwains-theme-accent)'
+          hours_to_show: 24
+          hour24: true
+          points_per_hour: 1
+          smoothing: true
+          show:
+            name: false
+            points: hover
+            graph: line
+            extrema: false

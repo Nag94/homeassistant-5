@@ -1,0 +1,28 @@
+---
+# Zones allow you to specify certain regions on earth (for now).
+#
+# https://www.home-assistant.io/components/zone/
+#
+zone:
+
+  # Home Zone
+  - name: Home
+    latitude: !secret zone_home_latitude
+    longitude: !secret zone_home_longitude
+    radius: 75
+    passive: false
+    icon: mdi:home
+
+  # Work Zone Bedar
+  - name: Tech Data Ternat
+    latitude: !secret zone_work_bedar_latitude
+    longitude: !secret zone_work_bedar_longitude
+    radius: 125
+    icon: mdi:briefcase
+
+  # Ouders Bedar
+  - name: Ouders Bedar
+    latitude: !secret zone_ouders_bedar_latitude
+    longitude: !secret zone_ouders_bedar_longitude
+    radius: 75
+    icon: mdi:home

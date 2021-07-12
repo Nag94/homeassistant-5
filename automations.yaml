@@ -1,0 +1,87 @@
+- alias: Home Assistant Restart Notification
+  description: ''
+  use_blueprint:
+    path: gregoryduckworth/restart_notification.yaml
+    input:
+      notification_message: Home Assistant has succesfully restarted!
+      notify_device: c91817990d5ddf8f4593fde2320382ba
+  id: 526477c2ab784751b9578bd381aeae12
+- alias: Low battery level detection & notification for all battery sensors
+  description: ''
+  use_blueprint:
+    path: sbyx/low-battery-level-detection-notification-for-all-battery-sensors.yaml
+    input:
+      time: '10:00:00'
+      exclude:
+        entity_id:
+        - sensor.hd1913_battery_level
+      actions:
+      - device_id: c91817990d5ddf8f4593fde2320382ba
+        domain: mobile_app
+        type: notify
+        title: Low battery
+        message: 'Low battery warning for: {{sensors}}'
+      threshold: 20
+  id: 6fd5819fb70f42aeb95ee1b08380731d
+- alias: Notify when plants are thirsty
+  description: ''
+  trigger:
+  - platform: time
+    at: '10:00'
+  condition:
+  - condition: state
+    entity_id: plant.calathea
+    state: problem
+    attribute: problem
+  action:
+  - device_id: c91817990d5ddf8f4593fde2320382ba
+    domain: mobile_app
+    type: notify
+    title: Plant heeft dorst
+    message: Plant heeft dorst
+  mode: single
+  id: 76dc965f0a2849a1bebb4930de25298c
+- alias: Plant problem
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: group.plants
+    to: problem
+  condition: []
+  action:
+  - service: input_boolean.turn_on
+    target:
+      entity_id: input_boolean.plant_problem
+  mode: single
+  id: 65ad9e24f0714c1193af999b7b93b238
+- alias: Plant notification
+  description: ''
+  use_blueprint:
+    path: vorion/actionable-notifications-for-android.yaml
+    input:
+      notify_device: c91817990d5ddf8f4593fde2320382ba
+      trigger_entity: input_boolean.plant_problem
+      first_action: []
+      notification_title: Plant issues
+      notification_message: There are 1 or more issues with your plants
+      action_1_title: Plant overview
+      action_1_uri: /dwains-dashboard/more_page_addon_garden_status
+  id: e72aac2b968143098337d7d8d65a52fe
+- alias: Automated Daily Snapshot
+  description: ''
+  use_blueprint:
+    path: vorion/create-automated-backups-every-day.yaml
+    input:
+      trigger_time: '2:00:00'
+      send_notification: true
+      notify_device: c91817990d5ddf8f4593fde2320382ba
+  id: a09596bc671c46a281ef53fad680fbe0
+- id: '1625743361056'
+  alias: Mute mediaplayer when calling.
+  description: ''
+  use_blueprint:
+    path: JackPoint/mute_media_player_on_call.yaml
+    input:
+      phone_state: sensor.oneplus_7t_pro_phone_state
+      person: person.bedar
+      media_player: media_player.volumio

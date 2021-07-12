@@ -1,0 +1,6 @@
+livingroom_plants:
+  name: Livingroom Plants 
+  entities: 
+    - plant.calathea
+    - plant.dracaena
+    - plant.spathiphyllum

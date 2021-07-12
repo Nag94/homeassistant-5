@@ -1,0 +1,51 @@
+# https://dwainscheeren.github.io/dwains-lovelace-dashboard/configuration/house_information.html
+
+house_information:
+  favorites:
+    - entity: camera.nest_cam
+    - entity: camera.nest_iq_cam
+    - entity: plant.dracaena
+    - entity: plant.calathea
+    - entity: plant.spathiphyllum
+    # - entity: switch.circadian_lighting_circalight_ct_living_room
+    #   icon_on: mdi:theme-light-dark
+    #   icon_off: mdi:theme-light-dark
+    # - entity: switch.circadian_lighting_circalight_ct_hallway
+    #   icon_on: mdi:theme-light-dark
+    #   icon_off: mdi:theme-light-dark
+
+  addons:
+    - name: Calendar
+      icon: mdi:calendar
+      path: 'dwains-dashboard/addons/house_information/calendar/page.yaml'
+      data:
+        calendars:
+          - calendar.bedar
+    - name: Statistics
+      icon: mdi:desktop-tower
+      path: 'dwains-dashboard/addons/house_information/statistics/page.yaml'
+      data:
+        stats:
+          - entity: sensor.raspberrypi_cpu_usage
+            name: CPU
+            icon: mdi:chip
+          - entity: sensor.raspberrypi_memory_usage
+            name: RAM
+            icon: mdi:memory
+          - entity: sensor.raspberrypi_cpu_temperature
+            name: Temp
+            icon: mdi:thermometer
+          - entity: sensor.raspberrypi_disk_usage
+            name: Disk
+            icon: mdi:harddisk
+    - name: Network
+      icon: mdi:lan
+      path: 'dwains-dashboard/addons/house_information/network/page.yaml'
+      data:
+        stats:
+          - entity: sensor.local_ip
+            name: IP
+            icon: mdi:ethernet
+    - name: Adguard 
+      icon: mdi:pi-hole
+      path: 'dwains-dashboard/addons/more_page/adguard/page.yaml'

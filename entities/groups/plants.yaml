@@ -1,0 +1,7 @@
+plants:
+  name: Plants 
+  entities: 
+    - plant.calathea
+    # - plant.cannabis
+    - plant.dracaena
+    - plant.spathiphyllum

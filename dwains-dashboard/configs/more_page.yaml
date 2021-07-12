@@ -1,0 +1,28 @@
+# https://dwainscheeren.github.io/dwains-lovelace-dashboard/configuration/more_page.html
+
+more_page:
+  addons:
+    - name: Garden status
+      icon: mdi:flower
+      path: 'dwains-dashboard/addons/garden/page.yaml'
+      main_menu: 'true'
+    - name: Creality Ender 5 Plus
+      icon: 'mdi:printer-3d'
+      path: 'dwains-dashboard/addons/more_page/3D-Printer/page.yaml'
+    - name: AdGuard
+      icon: fas:ad
+      path: 'dwains-dashboard/addons/more_page/adguard/page.yaml'
+    - name: Afvalwijzer
+      icon: fas:recycle
+      path: 'dwains-dashboard/addons/more_page/afvalwijzer/page.yaml'
+      data:
+        wastecollector: RecycleApp
+        sort_attribute: Sort-date
+    - name: SpeedTest
+      main_menu: 'true'
+      icon: mdi:lan
+      path: 'dwains-dashboard/addons/more_page/speedtest/page.yaml'
+    - name: RPI
+      main_menu: 'true'
+      icon: mdi:raspberry-pi
+      path: 'dwains-dashboard/addons/more_page/rpi/page.yaml'

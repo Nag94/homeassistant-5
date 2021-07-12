@@ -1,0 +1,13 @@
+mqtt:
+  broker: !secret broker_host
+  port: !secret broker_port
+  username: !secret broker_user
+  password: !secret broker_pass
+  discovery: true
+  discovery_prefix: homeassistant
+  birth_message:
+    topic: 'hass/status'
+    payload: 'online'
+  will_message:
+    topic: 'hass/status'
+    payload: 'offline'

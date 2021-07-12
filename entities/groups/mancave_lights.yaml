@@ -1,0 +1,4 @@
+mancave_lights:
+  name: Mancave Lights
+  entities:
+    - light.mancave_light

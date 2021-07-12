@@ -1,0 +1,6 @@
+info  2021-07-08 11:17:57: Logging to console and directory: '/config/zigbee2mqtt/log/2021-07-08.11-17-54' filename: log.txt
+info  2021-07-08 11:17:57: Starting Zigbee2MQTT version 1.20.0-dev (commit #fbf9a58)
+info  2021-07-08 11:17:57: Starting zigbee-herdsman (0.13.118)
+error 2021-07-08 11:18:03: Not connected to MQTT server!
+error 2021-07-08 11:18:03: Cannot send message: topic: 'zigbee2mqtt/bridge/state', payload: 'offline
+info  2021-07-08 11:18:03: Disconnecting from MQTT server

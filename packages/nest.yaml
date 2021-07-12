@@ -1,0 +1,7 @@
+nest:
+  client_id: 491947424046-7bdgfc0qrkdnu9c0n20nt856c19b5fr9.apps.googleusercontent.com
+  client_secret: rKUJ3bikjpdydn-n2Sk4eaFS
+  # "Project ID" in the Device Access Console
+  project_id: cbd3e4d6-cc5b-4302-98c5-dcbb9fb0b503
+  # Provide the full path exactly as shown under "Subscription name" in Google Cloud Console
+  subscriber_id: projects/ha-cloud-connection/subscriptions/HANest

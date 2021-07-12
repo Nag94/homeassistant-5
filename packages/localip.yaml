@@ -1,0 +1,7 @@
+#
+# The local_ip sensor will expose the local (LAN) IP address of your Home Assistant instance.
+#
+#
+# https://www.home-assistant.io/integrations/local_ip/
+#
+local_ip:

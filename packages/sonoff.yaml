@@ -1,0 +1,8 @@
+sonoff:
+  username: bedar89@gmail.com
+  password: Simba585191c
+
+camera:
+  - platform: ffmpeg
+    name: Bedroom Camera
+    input: 'rtsp://rtsp:Simba585191c@192.168.1.220:554/av_stream/ch0'

@@ -1,0 +1,6 @@
+# dwains_theme
+
+- type: map
+  hours_to_show: 48
+  entities:
+    - person.bedar

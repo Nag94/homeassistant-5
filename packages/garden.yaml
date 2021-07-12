@@ -1,0 +1,191 @@
+#################################################################
+#                                                               #
+#                       Packages/Garden                         #
+#                                                               #
+#################################################################
+
+#################################################################
+#                                                               #
+#                          Customize                            #
+#                                                               #
+#################################################################
+
+homeassistant:
+  customize:
+    sensor.cannabis_moisture:
+      icon: mdi:water
+      friendly_name: Cannabis Moisture
+    sensor.cannabis_light:
+      icon: mdi:white-balance-sunny
+      friendly_name: Cannabis light
+    sensor.cannabis_conductivity:
+      icon: mdi:emoticon-poop
+      friendly_name: Cannabis Conductivity
+    sensor.cannabis_temperature:
+      icon: mdi:thermometer
+      friendly_name: Cannabis Temperature
+    sensor.cannabis_battery:
+      icon: mdi:battery
+      friendly_name: Cannabis Battery
+
+    sensor.dracaena_moisture:
+      icon: mdi:water
+      friendly_name: Dracaena Moisture
+    sensor.dracaena_brightness:
+      icon: mdi:white-balance-sunny
+      friendly_name: Dracaena brightness
+    sensor.dracaena_conductivity:
+      icon: mdi:emoticon-poop
+      friendly_name: Dracaena Conductivity
+    sensor.dracaena_temperature:
+      icon: mdi:thermometer
+      friendly_name: Dracaena Temperature
+    sensor.dracaena_battery:
+      icon: mdi:battery
+      friendly_name: Dracaena Battery      
+
+    sensor.calathea_moisture:
+      icon: mdi:water
+      friendly_name: Calathea Moisture
+    sensor.calathea_brightness:
+      icon: mdi:white-balance-sunny
+      friendly_name: Calathea brightness
+    sensor.calathea_conductivity:
+      icon: mdi:emoticon-poop
+      friendly_name: Calathea Conductivity
+    sensor.calathea_temperature:
+      icon: mdi:thermometer
+      friendly_name: Calathea Temperature
+    sensor.calathea_battery:
+      icon: mdi:battery
+      friendly_name: Calathea Battery  
+      
+    sensor.spathiphyllum_moisture:
+      icon: mdi:water
+      friendly_name: Spathiphyllum Moisture
+    sensor.spathiphyllum_brightness:
+      icon: mdi:white-balance-sunny
+      friendly_name: Spathiphyllum brightness
+    sensor.spathiphyllum_conductivity:
+      icon: mdi:emoticon-poop
+      friendly_name: Spathiphyllum Conductivity
+    sensor.spathiphyllum_temperature:
+      icon: mdi:thermometer
+      friendly_name: Spathiphyllum Temperature
+    sensor.spathiphyllum_battery:
+      icon: mdi:battery
+      friendly_name: Spathiphyllum Battery        
+#################################################################
+#                                                               #
+#                       Plant Monitors                          #
+#                                                               #
+#################################################################
+
+plant:
+  dracaena:
+    sensors:
+      moisture: sensor.dracaena_moisture
+      battery: sensor.dracaena_battery
+      temperature: sensor.dracaena_temperature
+      conductivity: sensor.dracaena_conductivity
+      brightness: sensor.dracaena_brightness
+    min_moisture: 15
+    max_moisture: 60
+    min_battery: 15
+    min_temperature: 10
+    max_temperature: 35
+    min_conductivity: 200
+    max_conductivity: 1500
+    min_brightness: 2000
+    max_brightness: 50000
+    
+  cannabis:
+    sensors:
+      moisture: sensor.cannabis_moisture
+      battery: sensor.cannabis_battery
+      temperature: sensor.cannabis_temperature
+      conductivity: sensor.cannabis_conductivity
+      brightness: sensor.cannabis_brightness
+    min_moisture: 15
+    max_moisture: 60
+    min_battery: 15
+    min_temperature: 8
+    max_temperature: 32
+    min_conductivity: 350
+    max_conductivity: 2000
+    min_brightness: 3000
+    max_brightness: 60000
+    
+  calathea:
+    sensors:
+      moisture: sensor.calathea_moisture
+      battery: sensor.calathea_battery
+      temperature: sensor.calathea_temperature
+      conductivity: sensor.calathea_conductivity
+      brightness: sensor.calathea_brightness
+    min_moisture: 15
+    max_moisture: 65
+    min_battery: 15
+    min_temperature: 12
+    max_temperature: 32
+    min_conductivity: 350
+    max_conductivity: 1000
+    min_brightness: 800
+    max_brightness: 20000
+
+  spathiphyllum:
+    sensors:
+      moisture: sensor.spathiphyllum_moisture
+      battery: sensor.spathiphyllum_battery
+      temperature: sensor.spathiphyllum_temperature
+      conductivity: sensor.spathiphyllum_conductivity
+      brightness: sensor.spathiphyllum_brightness
+    min_moisture: 15
+    max_moisture: 65
+    min_battery: 15
+    min_temperature: 15
+    max_temperature: 32
+    min_conductivity: 350
+    max_conductivity: 2000
+    min_brightness: 1000
+    max_brightness: 22500
+    
+# #################################################################
+# #                                                               #
+# #                          Sensors                              #
+# #                                                               #
+# #################################################################
+
+# sensor:
+
+# ####################################################
+# #                                                  #
+# #                  Sensors - MQTT                  #
+# #                                                  #
+# ####################################################
+
+#   - platform: mqtt
+#     name: cannabis_moisture
+#     state_topic: miflora/cannabis/
+#     value_template: '{{ value_json.moisture | int }}'
+#     unit_of_measurement: '%'
+#   - platform: mqtt
+#     name: cannabis_battery
+#     state_topic: miflora/cannabis/
+#     value_template: '{{ value_json.battery | int }}'
+#     unit_of_measurement: '%'
+#   - platform: mqtt
+#     name: cannabis_temperature
+#     state_topic: miflora/cannabis/
+#     value_template: '{{ value_json.temperature | float }}'
+#     unit_of_measurement: '°C'
+#   - platform: mqtt
+#     name: cannabis_conductivity
+#     state_topic: miflora/cannabis/
+#     value_template: '{{ value_json.conductivity | int }}'
+#     unit_of_measurement: 'µS/cm'
+#   - platform: mqtt
+#     name: cannabis_brightness
+#     state_topic: miflora/cannabis/
+#     value_template: '{{ value_json.brightness | int }}'
+#     unit_of_measurement: 'Lux'

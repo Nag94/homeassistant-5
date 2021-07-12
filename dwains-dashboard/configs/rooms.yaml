@@ -1,0 +1,81 @@
+# https://dwainscheeren.github.io/lovelace-dwains-dashboard/configuration/rooms.html
+
+rooms:
+  - name: Living room
+    icon: mdi:sofa
+    light: group.livingroom_lights
+    temperature: sensor.livingroom_multisensor_temperature
+    humidity: sensor.livingroom_multisensor_humidity
+    pressure: sensor.livingroom_multisensor_pressure
+    media_player: group.living_room_mediaplayers
+    addons:
+
+      - name: Plants
+        icon: mdi:flower
+        path: 'dwains-dashboard/addons/rooms/living-room/plant/page.yaml'
+        button_path: 'dwains-dashboard/addons/rooms/living-room/plant/button.yaml'
+        data:
+          plants: 
+            - entity: plant.dracaena
+              species: dracaena marginata
+            - entity: plant.spathiphyllum
+              species: spathiphyllum 'bingo cupido'        
+            - entity: plant.calathea
+              species: calathea roseopicta
+
+      - name: Camera
+        path: 'dwains-dashboard/addons/rooms/living-room/camera/page.yaml'
+        button_path: 'dwains-dashboard/addons/rooms/living-room/camera/button.yaml'
+        data:
+          entity: camera.nest_iq_cam
+
+  - name: Hallway
+    icon: mdi:key
+    light: group.hallway_lights
+    
+  - name: Toilet
+    icon: mdi:toilet
+    motion: binary_sensor.toilet_motion_occupancy
+    light: group.toilet_lights
+
+  - name: Kitchen
+    icon: mdi:silverware-variant
+    motion: binary_sensor.kitchen_motion_occupancy
+    light: group.kitchen_lights
+    
+  - name: Bedroom
+    icon: mdi:bed
+    light: group.bedroom_lights
+    media_player: media_player.bedroom_display
+    addons:
+      - name: Fan Control
+        icon: mdi:fan
+        path: 'dwains-dashboard/addons/rooms/bedroom/fan/page.yaml'
+        button_path: 'dwains-dashboard/addons/rooms/bedroom/fan/button.yaml'
+        data:
+          entity: fan.bedroom_fan
+
+  - name: Mancave
+    icon: mdi:cat
+    light: group.mancave_lights
+    # motion: binary_sensor.mancave_motion_sensor_occupancy
+    addons:
+      - name: 3D Printer
+        icon: mdi:printer-3d
+        path: 'dwains-dashboard/addons/more_page/3D-Printer/page.yaml'
+
+  - name: Server Rack
+    icon: mdi:server
+    temperature: sensor.server_multisensor_temperature
+    humidity: sensor.server_multisensor_humidity
+    pressure: sensor.server_multisensor_pressure
+    addons:
+      - name: HA Server
+        icon: mdi:home-assistant
+        path: 'dwains-dashboard/addons/rooms/server-room/ha-server.yaml'
+        button_path: 'dwains-dashboard/addons/rooms/server-room/button.yaml'
+        data:
+          some_data: 'Version: {{states.sensor.current_version.state}}'
+          some_other_data: 'Startup Time: {{states.sensor.ha_restart_time.state}}' 
+          some_more_data: 'Uptime: {{states.sensor.time_online.state}}'
+          entity: binary_sensor.server_main

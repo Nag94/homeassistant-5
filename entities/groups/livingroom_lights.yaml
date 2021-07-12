@@ -1,0 +1,10 @@
+livingroom_lights:
+  name: Livingroom Lights
+  entities:
+    - light.livingroom_light_3_bulb_1
+    - light.livingroom_light_3_bulb_2
+    - light.livingroom_light_3_bulb_3
+    - light.livingroom_light_4_bulb_1
+    - light.livingroom_light_4_bulb_2
+    - light.livingroom_light_4_bulb_3
+    - light.livingroom_light_4_bulb_4

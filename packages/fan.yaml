@@ -1,0 +1,182 @@
+smartir:
+
+fan:
+  - platform: smartir
+    name: Bedroom fan
+    unique_id: bedroom_fan
+    device_code: 1000
+    controller_data: remote.broadlink_rm4c_pro_remote
+    # power_sensor: binary_sensor.fan_power
+
+#### the rest of this is for using a Broadlink RF controller to control a dumb fan.                                             ####
+#### You will need to add your details in the config below as necessary (names, rf codes, etc)                                  ####
+
+#   - platform: template
+#     fans:
+#       bedroom_fan:
+#         friendly_name: "Bedroom Fan"
+#         value_template: "{{ states('input_boolean.bedroom_fan_state') }}"
+#         speed_template: "{{ states('input_select.bedroom_fan_speed') }}"
+#         turn_on:
+#           service: script.bedroom_fan_on
+#         turn_off:
+#           service: script.bedroom_fan_off
+#         set_speed:
+#           service: script.bedroom_fan_set_speed
+#           data_template:
+#             speed: "{{ speed }}"
+#         speeds:
+#           - "off"
+#           - low
+#           - medium
+#           - high
+
+# input_select:
+#   bedroom_fan_speed:
+#     name: bedroom Fan Speeds
+#     options:
+#       - 'off'
+#       - 'low'
+#       - 'medium'
+#       - 'high'
+
+# input_boolean:
+#   bedroom_fan_state:
+#     name: bedroom Fan State
+    
+# script:
+#   bedroom_fan_off:
+#     alias: bedroom Fan Off
+#     sequence:
+#       - service: switch.turn_on
+#         entity_id: switch.bedroom_fan_0
+#         # data:
+#           # packet: 'JgA0ACsMKw0PKA8pDygPKQ8oKw0PKA8oDykPAAEGKw0qDQ8pDygPKA8pDygrDQ8oDykPKA8ADQUAAAAA'
+#       - service: input_boolean.turn_off
+#         data:
+#           entity_id: input_boolean.bedroom_fan_state
+        
+#   bedroom_fan_on:
+#     alias: bedroom Fan On
+#     sequence:
+#       - service: input_boolean.turn_on
+#         data:
+#           entity_id: input_boolean.bedroom_fan_state
+#       - service_template: >
+#           {% if is_state("input_select.bedroom_fan_speed", "low") %}
+#             script.bedroom_fan_low
+#           {% elif is_state("input_select.bedroom_fan_speed", "medium") %}
+#             script.bedroom_fan_med
+#           {% elif is_state("input_select.bedroom_fan_speed", "high") %}
+#             script.bedroom_fan_high
+#           {% endif %}
+          
+#   bedroom_fan_set_speed:
+#     alias: bedroom Fan Set Speed
+#     sequence:
+#       - service: input_select.select_option
+#         data_template:
+#           entity_id: input_select.bedroom_fan_speed
+#           option: "{{ speed }}"
+#       - delay:
+#           milliseconds: 500
+#       - service: script.turn_on
+#         entity_id: script.bedroom_fan_on
+
+#   bedroom_fan_low:
+#     alias: bedroom Fan Low
+#     sequence:
+#       - service: switch.turn_on
+#         entity_id:  switch.bedroom_fan_1
+
+#   bedroom_fan_med:
+#     alias: bedroom Fan Medium
+#     sequence:
+#       - service: switch.turn_on
+#         entity_id:  switch.bedroom_fan_2
+
+#   bedroom_fan_high:
+#     alias: bedroom Fan High
+#     sequence:
+#       - service: switch.turn_on
+#         entity_id:  switch.bedroom_fan_3
+
+# switch:
+#   - platform: broadlink
+#     host: 192.168.1.132
+#     mac: '24:df:a7:d3:2a:7e'
+#     # timeout: 15
+#     switches:
+#       bedroom_light:
+#         friendly_name: "Bedroom Light"
+#         command_on: 'sgB4Ag4MDwsPCw8MDgwPCw8LDwsPDA4MDwsPqRwLHAsPGRwLHAscDBwLHAsPGQ8YHAsdCw8YDxgPGQ8YDxkOGRwLDxkOGRwLDxkcCw8YDxkcCw8YDxkPGBwLHAwcCxwLHAwPGBwLHAwcCw8YHQsPGA8YDxkcCw8ZDhkPGA8ZDxgPGA8ZDhkcCxwMHAsPGBwMHAscCxwMHAscCxwMHAsOAANIDwwPCw8LDwsPCw8MDwsPCw8LDwwPCw+oHQscCw8YHQscCxwMHAscCw8ZDxgcCxwMDxgPGA8ZDxgPGA8ZHAsPGA8ZHAsPGBwMDxgPGBwMDxgPGQ4ZHAscDBwLHAscDA4ZHAscDBwLDxgcDA8YDxgPGRwLDxgPGQ8YDxgPGQ8YDxkOGRwLHAwbDA8YHAwbDBwLHAwbDBwLHAwcCw4AA6YPCw8LDwsPDA4MDwsPCw8MDgwPCw8MDqkcCxwMDhkcCxwMGwwcCxwMDhkPGRsMHAsPGQ4ZDhkPGA8ZDhkcDA4ZDhkcDA4ZHAsPGQ4ZHAsPGQ4ZDhkcDBsMHAscDBsMDxkbDBsMHAwOGRsMDxkOGQ4ZDxgPGQ8YHAwOGQ4ZHAwbDA4ZHAwbDBwLHAwbDBwLDxkbDBsMDxkOGRsMDwADSA4MDgwODA8MDgwODA4MDwwODA4MDgwPqRsMHAwOGRsMHAwbDBsMHAwOGQ4ZHAwbDA4ZDxkOGQ4aDhkOGRsMDxkOGRsMDxkbDA4aDhkbDA4aDhkOGRwMGwwbDBwMGwwOGRwMGwwbDA8ZGwwOGQ8ZDhkOGQ8ZDhkbDA8ZDhkbDBwMDhkbDBwMGwwbDRsMGwwOGhsMGwwOGg4ZGwwOAAXc'
+#         command_off: 'sgB4Ag4MDwsPCw8MDgwPCw8LDwsPDA4MDwsPqRwLHAsPGRwLHAscDBwLHAsPGQ8YHAsdCw8YDxgPGQ8YDxkOGRwLDxkOGRwLDxkcCw8YDxkcCw8YDxkPGBwLHAwcCxwLHAwPGBwLHAwcCw8YHQsPGA8YDxkcCw8ZDhkPGA8ZDxgPGA8ZDhkcCxwMHAsPGBwMHAscCxwMHAscCxwMHAsOAANIDwwPCw8LDwsPCw8MDwsPCw8LDwwPCw+oHQscCw8YHQscCxwMHAscCw8ZDxgcCxwMDxgPGA8ZDxgPGA8ZHAsPGA8ZHAsPGBwMDxgPGBwMDxgPGQ4ZHAscDBwLHAscDA4ZHAscDBwLDxgcDA8YDxgPGRwLDxgPGQ8YDxgPGQ8YDxkOGRwLHAwbDA8YHAwbDBwLHAwbDBwLHAwcCw4AA6YPCw8LDwsPDA4MDwsPCw8MDgwPCw8MDqkcCxwMDhkcCxwMGwwcCxwMDhkPGRsMHAsPGQ4ZDhkPGA8ZDhkcDA4ZDhkcDA4ZHAsPGQ4ZHAsPGQ4ZDhkcDBsMHAscDBsMDxkbDBsMHAwOGRsMDxkOGQ4ZDxgPGQ8YHAwOGQ4ZHAwbDA4ZHAwbDBwLHAwbDBwLDxkbDBsMDxkOGRsMDwADSA4MDgwODA8MDgwODA4MDwwODA4MDgwPqRsMHAwOGRsMHAwbDBsMHAwOGQ4ZHAwbDA4ZDxkOGQ4aDhkOGRsMDxkOGRsMDxkbDA4aDhkbDA4aDhkOGRwMGwwbDBwMGwwOGRwMGwwbDA8ZGwwOGQ8ZDhkOGQ8ZDhkbDA8ZDhkbDBwMDhkbDBwMGwwbDRsMGwwOGhsMGwwOGg4ZGwwOAAXc'
+#       bedroom_fan_1:
+#         friendly_name: "Bedroom Fan Low"
+#         command_on: 'JgAKASkOKA8NKg0qDSoNKg8oDygPKQ4pDikO8isNJxAOKQ4oECgoDygPKA8oDygPKA8o2CgPJxANKg4pDikoDw4pDikOKQ4pKBAn2CoNKA8NKg8oDygoDw8oDykOKQ4pJxAo2CoNKA8OKQ4pDygoDw4pDikOKQ4pKA8o2CgPKA8OKQ4pDygoDw8oDygQKA4pJxAn2SkOJw8PKA8pDiknEA4pDikOKQ4pKA8o2CkOKA8OKQ4pDikoDw0qDikOKQ4pKA8o1ykPKA8OKQ4pDikoDw4pDygPKA0qKBAn2SkNKA8OKQ4pDygoDw4pDykOKQ8oJxAo2CkOJw8PKA8oDyknEA0qDikOKQ4pKA8oAA0F'
+#         command_off: 'JgAKASkOKA8NKg0qDSoNKg8oDygPKQ4pDikO8isNJxAOKQ4oECgoDygPKA8oDygPKA8o2CgPJxANKg4pDikoDw4pDikOKQ4pKBAn2CoNKA8NKg8oDygoDw8oDykOKQ4pJxAo2CoNKA8OKQ4pDygoDw4pDikOKQ4pKA8o2CgPKA8OKQ4pDygoDw8oDygQKA4pJxAn2SkOJw8PKA8pDiknEA4pDikOKQ4pKA8o2CkOKA8OKQ4pDikoDw0qDikOKQ4pKA8o1ykPKA8OKQ4pDikoDw4pDygPKA0qKBAn2SkNKA8OKQ4pDygoDw4pDykOKQ8oJxAo2CkOJw8PKA8oDyknEA0qDikOKQ4pKA8oAA0F'  
+#       bedroom_fan_2:
+#         friendly_name: "Bedroom Fan Medium"
+#         command_on: 'JgDaACoNKg0OKQ4pDSoOKQ0qDSsMKwwrDCsM8isPKA8NKg0qDSsnECcQJxAnECcQJxAn2SgOKA8NKg0rDCsMKwwrDCsNKigPDSoN9CgPJw8OKQ0rDCsMKw4pDikOKCkPDSoN9CgPJw8NKwwrDikMKw4pDikOKSgPDSoN9CgOKA8NKg0rDikMKwwrDCsNKigPDSoO8ycPKA8NKg0qDykMKwwrDCsMKygPDCsO8SwMKA8NKg4pDSsMKwwrDCsOKSoNDCsM9CgPKg0MKw0qDSoNKg0rDikMKygPDCsMAA0F'
+#         command_off: 'JgDaACoNKg0OKQ4pDSoOKQ0qDSsMKwwrDCsM8isPKA8NKg0qDSsnECcQJxAnECcQJxAn2SgOKA8NKg0rDCsMKwwrDCsNKigPDSoN9CgPJw8OKQ0rDCsMKw4pDikOKCkPDSoN9CgPJw8NKwwrDikMKw4pDikOKSgPDSoN9CgOKA8NKg0rDikMKwwrDCsNKigPDSoO8ycPKA8NKg0qDykMKwwrDCsMKygPDCsO8SwMKA8NKg4pDSsMKwwrDCsOKSoNDCsM9CgPKg0MKw0qDSoNKg0rDikMKygPDCsMAA0F'
+#       bedroom_fan_3:
+#         friendly_name: "Bedroom Fan High"
+#         command_on: 'JgDiAAcAB9QFAAsHKwsoDxAnECgPKA8oDygPKA8oECcQJxDxKg0oDxAnECgPKCcQJxAnECcQJxAnECfZKwwnEA8oDikPKA8oDygPKBAnECcQKCfZKwsoDxAnECcQKA8oDygPKA8oECcQJyjYKwwoDxAnECcPKBAoDygPKA8oDygPKCjYKwwoDw8oDygOKQ4pECcPKA4pECcQKCfZKwwnEA8nECgPKA8oDygPKBAnECcPKCjYKwwoDw4pECcQJxAnECgPKA8oDygPKCjXLAwoDw8oECcQJxAnECcQJxAoDygPKCcADQU='
+#         command_off: 'JgDiAAcAB9QFAAsHKwsoDxAnECgPKA8oDygPKA8oECcQJxDxKg0oDxAnECgPKCcQJxAnECcQJxAnECfZKwwnEA8oDikPKA8oDygPKBAnECcQKCfZKwsoDxAnECcQKA8oDygPKA8oECcQJyjYKwwoDxAnECcPKBAoDygPKA8oDygPKCjYKwwoDw8oDygOKQ4pECcPKA4pECcQKCfZKwwnEA8nECgPKA8oDygPKBAnECcPKCjYKwwoDw4pECcQJxAnECgPKA8oDygPKCjXLAwoDw8oECcQJxAnECcQJxAoDygPKCcADQU='
+#       bedroom_fan_0:
+#         friendly_name: "Bedroom Fan Off"
+#         command_on: 'JgCqACoNJxANKQ8pDicPJxEpDikOKQ4pDSoP8igPKA8OKQ8oDyknECcQJxAnECcQJxAn2SkOKA8PKA8oDykOKQ4pKA8NKg4pDSoP8ikOKA8NKg8oDygPKA8pJxANKg4pDikN9CoNKA8NKg4pDikPKA8oKA8PKA8pDikO8ykOJxAOKQ8oDikOKQ8oKA8NKg8oECgP8SoOJxANKg4pDikOKQ8oKA8OKQ4pDygPAA0F'
+#         command_off: 'JgCqACoNJxANKQ8pDicPJxEpDikOKQ4pDSoP8igPKA8OKQ8oDyknECcQJxAnECcQJxAn2SkOKA8PKA8oDykOKQ4pKA8NKg4pDSoP8ikOKA8NKg8oDygPKA8pJxANKg4pDikN9CoNKA8NKg4pDikPKA8oKA8PKA8pDikO8ykOJxAOKQ8oDikOKQ8oKA8NKg8oECgP8SoOJxANKg4pDikOKQ8oKA8OKQ4pDygPAA0F'  
+
+# automation:
+#   #- id: Turn_Off_SR_Fan_1_Sw
+#   - alias: Toggle bedroom Fan Low Switch
+#     initial_state: 'on'
+#     trigger:
+#       platform: state
+#       entity_id: switch.bedroom_fan_1
+#       to: 'on'
+#       for:
+#         seconds: 1
+#     action:
+#       service: homeassistant.turn_off
+#       entity_id: switch.bedroom_fan_1
+
+#   #- id: Turn_Off_SR_Fan_2_Sw
+#   - alias: Toggle bedroom Fan Medium Switch
+#     initial_state: 'on'
+#     trigger:
+#       platform: state
+#       entity_id: switch.bedroom_fan_2
+#       to: 'on'
+#       for:
+#         seconds: 1
+#     action:
+#       service: homeassistant.turn_off
+#       entity_id: switch.bedroom_fan_2
+     
+#   #- id: Turn_Off_SR_Fan_3_Sw
+#   - alias: Toggle bedroom Fan High Switch
+#     initial_state: 'on'
+#     trigger:
+#       platform: state
+#       entity_id: switch.bedroom_fan_3
+#       to: 'on'
+#       for:
+#         seconds: 1
+#     action:
+#       service: homeassistant.turn_off
+#       entity_id: switch.bedroom_fan_3
+    
+#   #- id: Turn_Off_SR_Fan_0_Sw
+#   - alias: Toggle bedroom Fan Off Switch
+#     initial_state: 'on'
+#     trigger:
+#       platform: state
+#       entity_id: switch.bedroom_fan_0
+#       to: 'on'
+#       for:
+#         seconds: 1
+#     action:
+#       service: homeassistant.turn_off
+#       entity_id: switch.bedroom_fan_0  

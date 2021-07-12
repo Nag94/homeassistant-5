@@ -1,0 +1,6 @@
+toilet_lights:
+  name: Toilet Lights 
+  entities:
+    - light.toilet_light_3_bulb_1
+    - light.toilet_light_3_bulb_2
+    - light.toilet_light_3_bulb_3

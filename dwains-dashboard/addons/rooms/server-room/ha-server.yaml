@@ -1,0 +1,190 @@
+# dwains_theme
+
+- type: custom:layout-card
+  layout: horizontal
+  # min-colums: 3
+  # max-colums: 3
+  cards:
+  - type: vertical-stack
+    cards:
+    - type: horizontal-stack
+      title: Home Assistant
+      cards:
+      - type: 'custom:mini-graph-card'
+        entities:
+            - entity: sensor.processor_use
+        hours_to_show: 48
+        icon: 'mdi:cpu-64-bit'
+        name: CPU
+        line_color: blue
+        line_width: 8
+        show:
+          #graph: bar
+        color_thresholds:
+        - value: 80
+          color: "#c0392b"
+        - value: 50
+          color: "#c2742b"
+        - value: 10
+          color: "#2bc235" 
+
+      - type: 'custom:mini-graph-card'
+        entities:
+          - sensor.memory_use_percent
+        hours_to_show: 48
+        icon: 'mdi:thermometer'
+        name: Memory
+        line_color: blue
+        line_width: 8
+        show:
+          #graph: bar
+        color_thresholds:
+        - value: 80
+          color: "#c0392b"
+        - value: 50
+          color: "#c2742b"
+        - value: 10
+          color: "#2bc235" 
+
+    - type: horizontal-stack
+      cards:
+      - type: 'custom:mini-graph-card'
+        entities:
+          - sensor.cpu_temperature
+        hours_to_show: 48
+        icon: 'mdi:temperature'
+        name: Temp
+        line_color: blue
+        line_width: 8
+        points_per_hour: 1
+        show:
+          #graph: bar
+        color_thresholds:
+        - value: 80
+          color: "#c0392b"
+        - value: 60
+          color: "#2bc235"
+        - value: 40
+          color: "#2b6ac2" 
+
+      # - type: 'custom:mini-graph-card'
+      #   entities:
+      #     - sensor.disk_free
+      #   hours_to_show: 24
+      #   icon: 'mdi:harddisk'
+      #   name: Disk free
+      #   line_width: 8
+      #   points_per_hour: 1
+      #   show:
+      #     graph: bar
+      - type: gauge
+        name: Disk Free
+        unit: '%'
+        entity: sensor.disk_free
+        severity:
+          green: 100
+          yellow: 50
+          red: 0
+
+    - type: horizontal-stack
+      cards:
+      - type: 'custom:mini-graph-card'
+        entities:
+          - entity: sensor.load_15m
+          - entity: sensor.load_5m
+          - entity: sensor.load_1m
+        height: 65
+        hours_to_show: 12
+        icon: 'mdi:download-network'
+        name: Load last 15/5/1 Minutes
+        points_per_hour: 1
+        show:
+          graph: bar
+        style: |
+          ha-card {
+            border-radius: 10px;
+          }
+  #Network
+  - type: vertical-stack
+    title: Network
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: custom:bignumber-card
+            title: Local IP
+            entity: sensor.local_ip
+            scale: 30px
+
+          - type: custom:mini-graph-card
+            name: 'Network' # Internet Speed
+            align_state: left
+            hour24: true
+            hours_to_show: 48
+            points_per_hour: 2
+            line_width: 3
+            font_size: 75
+            font_size_header : 22
+            show:
+              icon: true
+              extrema: true
+              labels: true
+              points: true
+            entities:
+              - entity: sensor.speedtest_download
+                name: Download
+                color: green
+              - entity: sensor.speedtest_upload
+                name: Upload
+                color: red
+              - entity: sensor.speedtest_ping
+                name: Ping
+                color: yellow
+
+  - type: vertical-stack
+    title: System Status
+    cards:
+    - type: entities
+      show_header_toggle: false
+      entities:
+        - entity: sensor.host_uptime_human
+          name: Host Uptime
+        - entity: sensor.host_uptime_in_seconds
+          name: HA Uptime (seconds)
+        - entity: sensor.host_uptime_human
+          name: HA Uptime
+        - entity: sensor.ha_release
+          name: Home Assistant Release
+          icon: mdi:home-assistant
+
+        - type: custom:fold-entity-row
+          head:
+            type: section
+            label: Details
+          items:
+          - entity: sensor.ha_release
+            name: Latest Version
+            icon: mdi:home-assistant
+          - entity: sensor.ha_release_local
+            name: Local Version
+            icon: mdi:home-assistant
+          - entity: sensor.uname
+          - entity: sensor.cpu_temperature
+          - entity: sensor.processor_use
+          - entity: sensor.load_1m
+          - entity: sensor.load_5m
+          - entity: sensor.load_15m
+          - entity: sensor.disk_use
+          - entity: sensor.disk_use_percent
+          - entity: sensor.disk_free
+          - entity: sensor.swap_free
+          - entity: sensor.swap_use
+          - entity: sensor.swap_use_percent
+          - entity: sensor.memory_free
+          - entity: sensor.memory_use
+          - entity: sensor.memory_use_percent
+          - entity: sensor.ipv4_address_eth0
+          - entity: sensor.ipv6_address_eth0
+          - entity: sensor.packets_in_eth0
+          - entity: sensor.packets_out_eth0
+          - entity: sensor.network_in_eth0
+          - entity: sensor.network_out_eth0

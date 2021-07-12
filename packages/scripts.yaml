@@ -1,0 +1,9 @@
+# The script integration allows users to specify a sequence of actions to be executed by Home Assistant. 
+# These are run when you turn the script on. 
+# The script integration will create an entity for each script and allow them to be controlled via services.
+#
+# This loads up my scripts configurations
+#
+# https://www.home-assistant.io/integrations/script/
+#
+script: !include_dir_merge_named ../entities/scripts

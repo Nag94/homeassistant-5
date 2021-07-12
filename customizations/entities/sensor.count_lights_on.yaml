@@ -1,0 +1,9 @@
+# sensor.count_lights_on:
+#   #friendly_name: Light
+#   icon: mdi:battery
+
+
+sensor.count_lights_on:
+  friendly_name: Back sDoor
+  device_class: door
+  icon: mdi:door

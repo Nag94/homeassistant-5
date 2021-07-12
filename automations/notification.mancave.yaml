@@ -1,0 +1,15 @@
+- alias: "Notificatie: Beweging mancave wanneer niemand thuis is"
+  initial_state: 'false'
+  trigger:
+  - entity_id: binary_sensor.mancave_motion_sensor_occupancy
+    platform: state
+    to: 'on'
+  condition:
+  - entity_id: group.device_status
+    state: 'not_home'
+    condition: state
+  action:
+  - service: notify.mobile_app
+    data:
+      title: "Beweging"
+      message: "Er is beweging gedetecteerd in de mancave!"
