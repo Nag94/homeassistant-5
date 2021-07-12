@@ -35,9 +35,9 @@ OZW_Log.txt
 pyozw.sqlite
 zwcfg_*
 zwscene.xml
+rtsp2webrtc_v4_armv7
 
 # Ignore folders.
-rtsp2webrtc_v4_armv7
 .git_old
 .cloud
 .storage
