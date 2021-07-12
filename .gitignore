@@ -37,6 +37,7 @@ zwcfg_*
 zwscene.xml
 
 # Ignore folders.
+rtsp2webrtc_v4_armv7
 .git_old
 .cloud
 .storage
