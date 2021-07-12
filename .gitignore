@@ -21,6 +21,7 @@
 .google.token
 .homekit.state
 .ios.conf
+.sonoff.json
 *.db
 *.db-shm
 *.db-wal
@@ -49,6 +50,7 @@ tts
 _OLD
 www/images/snapshots
 www/dwains-theme/fonts
+
 
 # ESPHome ignores
 esphome/secrets.yaml
